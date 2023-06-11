@@ -27,15 +27,15 @@ const envVarsSchema = Joi.object()
   })
   .unknown();
 const dot_env = process.env;
-const { value: envVars, error } = envVarsSchema.prefs({ errors: { label: 'key' } }).validate(dot_env);
+// const { value: envVars, error } = envVarsSchema.prefs({ errors: { label: 'key' } }).validate(dot_env);
 
-if (error) {
-  throw new Error(`Config validation error: ${error.message}`);
-}
+// if (error) {
+//   throw new Error(`Config validation error: ${error.message}`);
+// }
 
 module.exports = {
-  env: envVars.NODE_ENV,
-  port: envVars.PORT,
+  env: envVarsSchema.NODE_ENV,
+  port: envVarsSchema.PORT,
   // mongoose: {
   //   url: envVars.MONGODB_URL + (envVars.NODE_ENV === 'test' ? '-test' : ''),
   //   options: {
