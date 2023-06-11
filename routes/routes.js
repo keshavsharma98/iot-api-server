@@ -7,4 +7,11 @@ router.get("/home",async (req,res,next) => {
     })
 });
 
+
+router.get("/home",async (req,res,next) => {
+    res.status(200).json({
+        "message":"HELLO HOME!!"
+    })
+});
+
 module.exports = router; 
